@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: server.dockerfile
+    networks:
+      - my-network
+
+  front-end:
+    build:
+      context: ./front-end
+      dockerfile: front-end.dockerfile
+    environment:
+      SERVER_URL: "http://server:8080" 
+    networks:
+      - my-network
+
+  caddy:
+    build:
+      context: ./
+      dockerfile: caddy.dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - my-network
+
+
+
+networks:
+  my-network:
+    external: false

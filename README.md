@@ -1,4 +1,7 @@
-TO RUN : make up_build
+TO RUN : make up
 
 
 STOP : make down
+
+
+TO BUILD : make up_build    
